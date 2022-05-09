@@ -679,4 +679,4 @@ Proof. unfold Ravg. simpl. intros. field. Qed.
 
 Require ne_tree.
 
-Definition TRavg: ne_tree.T R -> R := ne_tree.fold (@id R) Ravg.
+Definition TRavg: ne_tree.T R -> R := ne_tree.fold (@id R) (fun x =>  Ravg (ne_list.to_plain x)).

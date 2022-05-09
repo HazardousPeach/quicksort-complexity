@@ -12,7 +12,9 @@ Variable X: E.
 
 (* The Quicksort we'll use is the monadic determinstic one that uses a partition pass, instantiated with the SimplyProfiled monad: *)
 
-Definition counted_cmp (x y: X): SimplyProfiled comparison := (1%nat, Ecmp _ x y).
+Print SimplyProfiled.
+
+Definition counted_cmp (x y: X): (monads.mon SimplyProfiled) comparison := (1%nat, Ecmp _ x y).
 
 Let qs := mon_det_partition.qs _ counted_cmp.
 Let part := mon_det_partition.partition _ counted_cmp.

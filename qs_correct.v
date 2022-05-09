@@ -31,7 +31,7 @@ Section contents.
 
   Variable PO: Relation_Definitions.preorder X Xle.
 
-  Lemma  qs_correct: forall l, vec.sorted Xle (qs leb l).
+  Lemma  qs_correct: forall l, vec.sorted Xle (vec.from_list (qs leb l)).
   Proof with auto.
     intro.
     pattern l, (qs leb l).

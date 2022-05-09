@@ -37,7 +37,7 @@ Section contents.
   Qed.
 
   Lemma In_pick_inv (l: ne_list.L X) (r: prod m X):
-    ne_tree.In r (pick l) -> fst r = monoid_zero m /\ In (snd r) l.
+    ne_tree.In r (pick l) -> fst r = monoid_zero m /\ In (snd r) (ne_list.to_plain l).
   Proof with auto.
     unfold pick.
     simpl.
@@ -64,7 +64,6 @@ Section contents.
       firstorder.
     destruct (IHl H).
     firstorder.
-    right...
   Qed.
 
 End contents.
