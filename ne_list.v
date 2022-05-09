@@ -25,7 +25,7 @@ Section contents.
     end.
 
   Lemma round_trip l x: (to_plain (from_plain x l)) = List.cons x l.
-  Proof with auto. induction l... simpl. rewrite IHl... Qed.
+  Proof with auto.  generalize l x. induction l0... simpl. rewrite IHl0... Qed.
 
   Fixpoint app (a b: L) {struct a}: L :=
     match a with
@@ -77,7 +77,7 @@ Proof with try reflexivity.
 Qed.
 
 Lemma map_ext (T U: Set) (f g: T -> U): ext_eq f g -> forall l, map f l = map g l.
-Proof. intros T U f g e. fold (ext_eq (map f) (map g)). rewrite e. reflexivity. Qed.
+Proof. intros e. fold (ext_eq (map f) (map g)). rewrite e. reflexivity. Qed.
 
 Lemma In_map_inv (T U: Set) (f: T -> U) (l: L T) (y: U): List.In y (map f l) -> exists x, f x = y /\ List.In x l.
 Proof. induction l; simpl; intros; destruct H; firstorder. Qed.
